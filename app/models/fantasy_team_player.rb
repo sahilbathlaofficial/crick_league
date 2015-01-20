@@ -25,7 +25,7 @@ class FantasyTeamPlayer < ActiveRecord::Base
     end
 
     def check_formation
-      current_formation = "#{ fantasy_team.batsmen.count }#{ fantasy_team.bowlers.count }#{ fantasy_team.all_rounders.count }#{ fantasy_team.wicket_keepers.count }".to_i
+      current_formation = [fantasy_team.batsmen.count, fantasy_team.bowlers.count, fantasy_team.all_rounders.count, fantasy_team.wicket_keepers.count]
       formation_matched = check_in_formation?(current_formation)
       unless formation_matched
         errors.add(:formation_mismatch, 'Formation not matching')
@@ -36,7 +36,14 @@ class FantasyTeamPlayer < ActiveRecord::Base
     def check_in_formation?(current_formation)
       #The logic is for current formations only and will change accordingly
       FantasyTeam::FORMATIONS.any? do |formation|
-        formation >= current_formation
+        satisfy_formation = true
+        current_formation.each_with_index do |individual_number, index|
+          if individual_number > formation[index]
+            satisfy_formation = false
+            break
+          end
+        end
+        satisfy_formation
       end
     end
 end

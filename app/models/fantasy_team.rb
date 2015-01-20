@@ -2,7 +2,7 @@ class FantasyTeam < Team
   #Constants
   MONEY_LIMIT = 100
   MAX_PLAYERS = 8
-  FORMATIONS = [3221, 3311, 4211]
+  FORMATIONS = [[3,2,2,1], [3,3,1,1], [4,2,1,1]]
 
   #Validations
   validate :check_max_players
