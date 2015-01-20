@@ -10,7 +10,7 @@
         <% player = fantasy_player.player %>
         <div>
           <%= player.name %> | <%= player.type %> | <%= player.cost.round(1) %>m
-          <span class="remove-player" data-id="<%= fantasy_player.id %>"> x</span>
+          <span class="remove-player" data-id="<%= fantasy_player.id %>" data-player-id="<%= player.id %>" > x</span>
         </div>
       <% end %>
     </div>
