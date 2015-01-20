@@ -1,0 +1,40 @@
+<div id="container">
+  <div class="left-container">
+    <div id="team-name"><%= @team.name %></div>
+    <!--<
+    <input type="fantasy_team[name]" id="change-name">
+    <button id="change-team-name">Change Name</button>
+    -->
+    <div id="team">
+      <% @fantasy_players.each do |fantasy_player| %>
+        <% player = fantasy_player.player %>
+        <div>
+          <%= player.name %> | <%= player.type %> | <%= player.cost.round(1) %>m
+          <span class="remove-player" data-id="<%= fantasy_player.id %>"> x</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="right-container">
+    <div id="player-count">Players selected
+      <span id="current-players-count" > <%= @team.players.count %>/8</span>
+    </div>
+    <div id="money-left">Money Left :- 
+      <span id="available-cost">
+        <%= FantasyTeam::MONEY_LIMIT - @players.sum(:cost) %>
+      </span>m
+    </div>
+    <div id="players-container">
+      <% %w(batsmen bowlers wicket_keepers all_rounders).each do |type| %>
+        <div id="<%= type %>-list">
+          <h2> <%= type.humanize %> </h2>
+          <ul>
+            <% instance_variable_get('@' + type).each do |player| %>
+              <li class="add-player <%= 'hidden' if player.id.in?(@player_ids) %>" data-id="<%= player.id %>"> <%= player.name %> </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

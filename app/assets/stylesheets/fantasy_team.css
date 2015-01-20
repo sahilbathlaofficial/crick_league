@@ -1,0 +1,33 @@
+.left-container {
+  position: absolute;
+  left:20%;
+  top: 10%;
+  width:45%;
+}
+
+.right-container {
+  position: absolute;
+  right: 20%;
+  top: 10%;
+}
+
+.right-container ul {
+  padding: 0;
+}
+
+.right-container li {
+  list-style : none;
+}
+
+#team {
+  margin-top: 20px;
+  border-top: 2px solid black;
+  width: 100%;
+  padding: 5px;
+}
+
+.remove-player {
+  margin-left: 10px;
+  cursor: pointer;
+  cursor: hand;
+}
