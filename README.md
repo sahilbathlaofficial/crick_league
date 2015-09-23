@@ -1,2 +1,2 @@
 # crick_league
-Ipl Fantasy League
+Ipl Fantasy League demo - https://ipl-fantasy-leag.herokuapp.com/
